@@ -1,1 +1,1 @@
-# react-redux-typescript
+# Проект с наработками во время изучения React & Redux & TypeScript
