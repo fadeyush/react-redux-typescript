@@ -1,1 +1,1 @@
-# Проект с наработками во время изучения React & Redux & TypeScript
+# Приложение на React & Redux & TypeScript
