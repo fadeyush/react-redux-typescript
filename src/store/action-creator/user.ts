@@ -1,16 +1,17 @@
-// import { Dispatch } from "redux";
-// import { UserAction, UsersActionTypes } from "../../types/user";
+import { Dispatch } from "redux";
+import { UserAction, UsersActionTypes } from "../../types/user";
+import axios from "axios";
 
-// export const fetchUsers = () => {
-//     return async(dispatch: Dispatch<UserAction>) => {
-//         try {
-//             dispatch({type: UsersActionTypes.FETCH_USERS});
+export const fetchUsers = () => {
+    return async(dispatch: Dispatch<UserAction>) => {
+        try {
+            dispatch({type: UsersActionTypes.FETCH_USERS});
 
-
-//             // 'https://jsonplaceholder.typicode.com/users'
-//         } catch (e) {
-//             console.log(e);
-//             dispatch({type: UsersActionTypes.FETCH_USERS_ERROR, payload: `Произошла ошибка при загрузке пользователей`});
-//         }
-//     }
-// }
+            const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+            dispatch({type: UsersActionTypes.FETCH_USERS_SUCCESS, payload: response.data});
+        } catch (e) {
+            console.log(e);
+            dispatch({type: UsersActionTypes.FETCH_USERS_ERROR, payload: `Произошла ошибка при загрузке пользователей`});
+        }
+    }
+}
