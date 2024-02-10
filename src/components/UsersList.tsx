@@ -1,14 +1,13 @@
-import React, { FC, useEffect } from 'react';
-import { UseTypedSelector } from '../hooks/UseTypedSelector';
-import { useDispatch } from 'react-redux';
-import { fetchUsers } from '../store/action-creator/user';
+import { FC, useEffect } from 'react';
+import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const UserList: FC = () => {
-    const {error, users, loading} = UseTypedSelector(state => state.user);
-    const dispatch = useDispatch();
+    const {error, users, loading} = useTypedSelector(state => state.user);
+    const {fetchUsers} = useActions();
 
     useEffect(()=>{
-        dispatch(fetchUsers())
+        fetchUsers()
     }, [])
 
     if(loading) {
@@ -28,4 +27,4 @@ const UserList: FC = () => {
     );
 };
 
-export default UserList;
+export default UserList; 

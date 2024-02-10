@@ -10,7 +10,6 @@ export const fetchUsers = () => {
             const response = await axios.get('https://jsonplaceholder.typicode.com/users');
             dispatch({type: UsersActionTypes.FETCH_USERS_SUCCESS, payload: response.data});
         } catch (e) {
-            console.log(e);
             dispatch({type: UsersActionTypes.FETCH_USERS_ERROR, payload: `Произошла ошибка при загрузке пользователей`});
         }
     }
